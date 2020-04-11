@@ -119,7 +119,9 @@ public class GUI extends Frame implements WindowListener, ActionListener {
         // Send relevant data to the hijacker module
         String victimIPString = victimIPTextField.getText();
         Integer chosenTimeout = (Integer) searchTimeoutChoice.getSelectedItem();
+        String[] ans = HTTPHijack.Hijacker(victimIPString, chosenTimeout);
 
-        
+        System.out.println(ans[0]);
+        System.out.println(ans[1]);
     }
 }

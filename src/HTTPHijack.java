@@ -135,12 +135,4 @@ public class HTTPHijack {
         StripPackets();
         return StripData();
     }
-
-    public static void main(String[] args) {
-        String target = "10.10.1.32";
-        int time = 10;//in seconds
-        String[] ans = Hijacker(target, time);
-        System.out.println(ans[0]);
-        System.out.println(ans[1]);
-    }
 }

@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="pcap4j-packetfactory-static-2.0.0-alpha.6">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../pcap4j-packetfactory-static-2.0.0-alpha.6.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
