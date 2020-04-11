@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7c8da0fa-cb40-425c-91bc-e4ec70a2ff2f" name="Default Changelist" comment="Added the packetfactory library.&#10;&#10;Made a sniffer for a single TCP packet on port 80, i.e. the first part of the HTTP packet.">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/pcap4j_packetfactory_static_2_0_0_alpha_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/slf4j_simple_1_7_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hijack.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Hijack.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HTTPHijack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HTTPHijack.java" afterDir="false" />
-    </list>
+    <list default="true" id="7c8da0fa-cb40-425c-91bc-e4ec70a2ff2f" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,8 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/HTTPHijack.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="139">
-              <caret line="125" column="32" lean-forward="true" selection-start-line="125" selection-start-column="32" selection-end-line="125" selection-end-column="32" />
+            <state relative-caret-position="275">
+              <caret line="133" column="38" lean-forward="true" selection-start-line="133" selection-start-column="38" selection-end-line="133" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -167,6 +161,14 @@
       <option name="presentableId" value="Default" />
       <updated>1586511913969</updated>
     </task>
+    <task id="LOCAL-00001" summary="Added the packetfactory library.&#10;&#10;Made a sniffer for a single TCP packet on port 80, i.e. the first part of the HTTP packet.">
+      <created>1586626389750</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1586626389750</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -266,8 +268,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HTTPHijack.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="125" column="32" lean-forward="true" selection-start-line="125" selection-start-column="32" selection-end-line="125" selection-end-column="32" />
+        <state relative-caret-position="275">
+          <caret line="133" column="38" lean-forward="true" selection-start-line="133" selection-start-column="38" selection-end-line="133" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
