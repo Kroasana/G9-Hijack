@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7c8da0fa-cb40-425c-91bc-e4ec70a2ff2f" name="Default Changelist" comment="" />
+    <list default="true" id="7c8da0fa-cb40-425c-91bc-e4ec70a2ff2f" name="Default Changelist" comment="Merged the two modules&#10;&#10;Since I forgot last commmit's message, I implemented the full processing procedure.">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hijack.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Hijack.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HTTPHijack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HTTPHijack.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,8 +23,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/HTTPHijack.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="133" column="38" lean-forward="true" selection-start-line="133" selection-start-column="38" selection-end-line="133" selection-end-column="38" />
+            <state relative-caret-position="272">
+              <caret line="40" column="32" lean-forward="true" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -28,18 +33,27 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="312">
+              <caret line="112" lean-forward="true" selection-start-line="112" selection-end-line="112" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PacketsOutput.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-13472" />
+            <state relative-caret-position="-102">
+              <caret lean-forward="true" />
+            </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dataOutput.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
-            </state>
+            <state relative-caret-position="-73" />
           </provider>
         </entry>
       </file>
@@ -55,6 +69,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>tostring</find>
+      <find>hijack</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -69,12 +84,15 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/HijackTest.java" />
+        <option value="$PROJECT_DIR$/src/GUI.java" />
+        <option value="$PROJECT_DIR$/dataOutput.txt" />
         <option value="$PROJECT_DIR$/src/HTTPHijack.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
+    <option name="x" value="358" />
+    <option name="y" value="52" />
     <option name="width" value="1696" />
     <option name="height" value="1087" />
   </component>
@@ -96,6 +114,10 @@
               <item name="Hijack" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Hijack" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -106,10 +128,10 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../pcap4j-packetfactory-static-2.0.0-alpha.6.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../jna-5.3.1.jar!/" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="project.structure.side.proportion" value="0.47126436" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -129,6 +151,13 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.HTTPHijack">
+    <configuration name="GUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GUI" />
+      <module name="Hijack" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="HTTPHijack" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="HTTPHijack" />
       <module name="Hijack" />
@@ -146,6 +175,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.HTTPHijack" />
+        <item itemvalue="Application.GUI" />
         <item itemvalue="Application.HijackTest" />
       </list>
     </recent_temporary>
@@ -168,7 +198,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586626389750</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Merged the two modules&#10;&#10;Since I forgot last commmit's message, I implemented the full processing procedure.">
+      <created>1586626537838</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1586626537838</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -180,15 +217,15 @@
       <window_info id="UI Designer" />
       <window_info id="Capture Tool" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Version Control" weight="0.32917964" />
       <window_info anchor="bottom" id="Terminal" weight="0.32917964" />
       <window_info anchor="bottom" id="Event Log" sideWeight="0.50053304" side_tool="true" weight="0.32917964" />
-      <window_info active="true" anchor="bottom" id="Messages" visible="true" weight="0.32917964" />
+      <window_info anchor="bottom" id="Messages" weight="0.32917964" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.32917964" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.32917964" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -206,7 +243,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit" />
     <MESSAGE value="Added the packetfactory library.&#10;&#10;Made a sniffer for a single TCP packet on port 80, i.e. the first part of the HTTP packet." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added the packetfactory library.&#10;&#10;Made a sniffer for a single TCP packet on port 80, i.e. the first part of the HTTP packet." />
+    <MESSAGE value="Merged the two modules&#10;&#10;Since I forgot last commmit's message, I implemented the full processing procedure." />
+    <option name="LAST_COMMIT_MESSAGE" value="Merged the two modules&#10;&#10;Since I forgot last commmit's message, I implemented the full processing procedure." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
@@ -251,25 +289,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/HijackTest.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/dataOutput.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
-        </state>
+        <state relative-caret-position="-73" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PacketsOutput.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-13472" />
+        <state relative-caret-position="-102">
+          <caret lean-forward="true" />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HijackTest.java">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/src/GUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="112" lean-forward="true" selection-start-line="112" selection-end-line="112" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HTTPHijack.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="133" column="38" lean-forward="true" selection-start-line="133" selection-start-column="38" selection-end-line="133" selection-end-column="38" />
+        <state relative-caret-position="272">
+          <caret line="40" column="32" lean-forward="true" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -315,10 +360,11 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
+          <last-edited>11</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.47126436" />
               </list>
             </option>
           </splitter-proportions>
@@ -330,7 +376,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.47126436" />
               </list>
             </option>
           </splitter-proportions>
@@ -350,11 +396,11 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>pcap4j-packetfactory-static-2.0.0-alpha.6</last-edited>
+          <last-edited>jna-5.3.1</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.47126436" />
               </list>
             </option>
           </splitter-proportions>

