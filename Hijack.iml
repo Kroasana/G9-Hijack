@@ -5,7 +5,7 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="11" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
       <library>
@@ -34,10 +34,8 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="org.pcap4j:pcap4j-core:1.8.2" level="project" />
-    <orderEntry type="library" name="org.pcap4j:pcap4j-packetfactory-static:1.8.2" level="project" />
-    <orderEntry type="library" name="net.java.dev.jna:jna:5.5.0" level="project" />
-    <orderEntry type="library" name="org.slf4j:slf4j-api:1.7.30" level="project" />
-    <orderEntry type="library" name="org.slf4j:slf4j-simple:1.7.30" level="project" />
+    <orderEntry type="library" name="pcap4j-core-2.0.0-alpha.6" level="project" />
+    <orderEntry type="library" name="slf4j-simple-1.7.5" level="project" />
+    <orderEntry type="library" name="pcap4j-packetfactory-static-2.0.0-alpha.6" level="project" />
   </component>
 </module>

