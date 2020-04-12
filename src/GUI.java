@@ -126,10 +126,10 @@ public class GUI extends Frame implements WindowListener, ActionListener {
         Integer chosenTimeout = (Integer) searchTimeoutChoice.getSelectedItem();
         String[] ans = HTTPHijack.Hijacker(victimIPString, chosenTimeout);
 
-        if (Arrays.asList(ans).contains(null)) {
+        if (ans == null || Arrays.asList(ans).contains(null)) {
             timeoutReached();
         } else {
-            openBrowserWithStolenSessionID(ans[0], ans[1], ans[2]);
+            openBrowserWithStolenSessionID("www." + ans[0], ans[1], ans[2]);
             System.out.println(ans[0]);
             System.out.println(ans[1]);
             System.out.println(ans[2]);
