@@ -7,6 +7,10 @@ import java.awt.event.WindowListener;
 import java.net.*;
 import java.util.Arrays;
 
+/**
+ * @ author Petar Petrov, 1227549
+ */
+
 public class GUI extends Frame implements WindowListener, ActionListener {
     private JPanel p1;
     private JLabel victimIPLabel;
